@@ -1,5 +1,7 @@
 # redux-boilerplate
 
+https://kitt.lewagon.com/knowledge/tracks/react-redux
+
 Simple React + Redux starter with the following config:
 
 - React, ReactDOM
