@@ -9,9 +9,15 @@ import App from './components/app';
 import '../assets/stylesheets/application.scss';
 
 // State and reducers
+import citiesReducer from './reducers/cities_reducer.js'
+import dummyReducer from './reducers/dummy_reducer.js'
+// const reducers = combineReducers({
+//   changeMe: (state = null, action) => state
+// });
 const reducers = combineReducers({
-  changeMe: (state = null, action) => state
-});
+  cities: citiesReducer,
+  dummy: dummyReducer
+})
 
 // render an instance of the component in the DOM
 ReactDOM.render(
