@@ -7,7 +7,8 @@ class App extends Component{
       return (
         <div className="app" style ={{height:"100vh"}}>
           <CityList />
-          <City city={{ name: "Tokyo", address: "2-11-3 Meguro, Meguro-ku, Tokyo ", slug: "tokyo" }}/>
+          {/* <City city={{ name: "Tokyo", address: "2-11-3 Meguro, Meguro-ku, Tokyo ", slug: "tokyo" }}/> */}
+          <City />
         </div>
       );
   }
