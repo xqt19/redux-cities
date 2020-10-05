@@ -5,7 +5,7 @@ import City from './city';
 class CityList extends Component{
 
     UNSAFE_componentWillMount(){
-        this.props.setCities();
+        this.props.loadUpTheCities();
     }
     
     render(){
@@ -25,7 +25,7 @@ import {connect} from 'react-redux'
 import {setCities} from '../actions'
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
-        {setCities: setCities}, dispatch
+        {loadUpTheCities: setCities}, dispatch
     )
 }
 const mapStateToProps=(state)=>{
