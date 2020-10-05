@@ -9,9 +9,9 @@ export const setCities=()=>{
     }
 }
 
-export const selectCity = (city) => {
+export const setActiveCity = (city) => {
     return {
-        type: 'SELECT_CITY',
+        type: 'SET_ACTIVE_CITY',
         payload: city
     }
 }

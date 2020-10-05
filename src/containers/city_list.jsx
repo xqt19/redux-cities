@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import City from './city';
 
 
 class CityList extends Component{
@@ -7,13 +6,21 @@ class CityList extends Component{
     UNSAFE_componentWillMount(){
         this.props.loadUpTheCities();
     }
+    handleClick= (city)=>{
+        this.props.chooseThisCity(city)
+    }
     
     render(){
+        let classes = "list-group-item"
+        if (this.props.city === this.props.selectedCity){
+            classes += " active-city"
+        }
         return(
             <div className="col-sm-7">
-                {this.props.cities.map((city)=>
-                    <City city={city} key={city.name}/>
-                )}
+                    {this.props.cities.map((city)=>
+                    <div key={city.slug} className={classes} onClick={() =>this.handleClick(city)}>{city.name}</div>
+                    )} 
+
             </div>
         )
     }
@@ -22,11 +29,12 @@ class CityList extends Component{
 // using redux
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {setCities} from '../actions'
+import {setCities, setActiveCity} from '../actions'
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(
-        {loadUpTheCities: setCities}, dispatch
-    )
+    return {
+        loadUpTheCities: bindActionCreators(setCities, dispatch),
+        chooseThisCity: bindActionCreators(setActiveCity, dispatch),
+    }
 }
 const mapStateToProps=(state)=>{
     return{
@@ -34,5 +42,4 @@ const mapStateToProps=(state)=>{
     }
 }
 
-// export default CityList
 export default connect(mapStateToProps,mapDispatchToProps)(CityList)

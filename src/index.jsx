@@ -16,7 +16,7 @@ import selectedCityReducer from './reducers/selected_city_reducer.js'
 // });
 const reducers = combineReducers({
   cities: citiesReducer,
-  selectedCity: selectedCityReducer
+  activeCity: selectedCityReducer
 })
 
 // render an instance of the component in the DOM
