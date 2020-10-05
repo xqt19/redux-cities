@@ -7,8 +7,7 @@ class App extends Component{
       return (
         <div className="app" style ={{height:"100vh"}}>
           <CityList />
-          {/* <City city={{ name: "Tokyo", address: "2-11-3 Meguro, Meguro-ku, Tokyo ", slug: "tokyo" }}/> */}
-          <City />
+          {this.props.chosenCity && <City city={this.props.chosenCity}/>}
         </div>
       );
   }
@@ -22,5 +21,11 @@ class App extends Component{
 //     </div>
 //   );
 // };
-
-export default App;
+import {connect} from 'react-redux'
+const mapStateToProps=(state)=>{
+  return{
+      chosenCity: state.selectedCity
+  }
+}
+export default connect(mapStateToProps,null)(App)
+// export default App;
