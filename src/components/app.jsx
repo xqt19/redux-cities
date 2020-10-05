@@ -7,20 +7,15 @@ class App extends Component{
       return (
         <div className="app" style ={{height:"100vh"}}>
           <CityList />
+          {this.props.chosenCity==null && <City/>}
           {this.props.chosenCity && <City city={this.props.chosenCity}/>}
         </div>
       );
   }
 };
-// const App = () => {
-//   return (
-//     <div className="app">
-//       <p>React + Redux starter</p>
-//       <CityList />
-//       <City />
-//     </div>
-//   );
-// };
+
+// export default App;
+
 import {connect} from 'react-redux'
 const mapStateToProps=(state)=>{
   return{
@@ -28,4 +23,4 @@ const mapStateToProps=(state)=>{
   }
 }
 export default connect(mapStateToProps,null)(App)
-// export default App;
+

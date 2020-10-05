@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class City extends Component{
     static defaultProps = {
-         city: {name: 'TODO DEFAULT Chengdu', address: 'TODO ADDRESS', slug: 'chengdu' }
+         city: {name: 'Singapore', address: 'Orchard Road', slug: 'singapore' }
     }
     handleClick= ()=>{
         //Redux Action (connect null,mapdispatchtoprops city)
