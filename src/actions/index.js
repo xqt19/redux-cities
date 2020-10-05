@@ -8,3 +8,10 @@ export const setCities=()=>{
         payload: cities
     }
 }
+
+export const selectCity = (city) => {
+    return {
+        type: 'SELECT_CITY',
+        payload: city
+    }
+}

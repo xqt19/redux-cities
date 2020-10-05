@@ -2,14 +2,20 @@ import React, {Component} from 'react';
 
 class City extends Component{
     static defaultProps = {
-         city: {name: 'TODO NAME Chengdu', address: 'TODO ADDRESS', slug: 'chengdu' }
+         city: {name: 'TODO DEFAULT Chengdu', address: 'TODO ADDRESS', slug: 'chengdu' }
     }
+    handleClick= ()=>{
+        //Redux Action (connect null,mapdispatchtoprops city)
+        this.props.chooseThisCity(this.props.city)
+    }
+
     render(){
-        const style={
-            backgroundImage: ""
+        let classes = "card-trip"
+        if (this.props.city === this.props.selectedCity){
+            classes += " active-city"
         }
         return(
-            <div className="card-trip">
+            <div className={classes} onClick={() =>this.handleClick(this.props.city)}>
             <img src={`https://kitt.lewagon.com/placeholder/cities/${this.props.city.slug}`} />
             <div className="card-trip-infos">
                 <div>
@@ -24,4 +30,19 @@ class City extends Component{
     }
 }
 
-export default City
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import {selectCity} from '../actions'
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(
+        {chooseThisCity: selectCity}, dispatch
+    )
+}
+const mapStateToProps=(state)=>{
+    return{
+        selectedCity: state.selectedCity
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(City)
+// export default City
